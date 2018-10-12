@@ -1,0 +1,32 @@
+{
+  "name": "@e3-lei/simple-pow-cryptocurrency",
+  "version": "0.1.0",
+  "description": "pow demo",
+  "main": "public/app.bundle.js",
+  "repository": "e3-lei/simple-pow-cryptocurrency",
+  "scripts": {
+    "watch": "webpack --watch",
+    "build": "webpack",
+    "test": "mocha --require @babel/register @babel/polyfill ./src/**/*.spec.js",
+    "cli-test": "node public/app.bundle.js",
+    "start": "http-server"
+  },
+  "keywords": [],
+  "author": "lei",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/register": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "mocha": "^5.2.0",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  }
+}
