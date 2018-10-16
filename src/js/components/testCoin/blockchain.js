@@ -1,4 +1,5 @@
 import { parse } from 'url';
+import { axios } from 'axios';
 
 export default class Blockchain {
     constructor() {
@@ -73,16 +74,18 @@ export default class Blockchain {
         this.nodes.add(parse(address).hostname)
     }
 
-    replaceChain() {
-        const network = this.nodes
-        let longest
-        let maxLength = this.chain.length
-        // need express here
-        // https://medium.com/@dinyangetoh/how-to-build-simple-restful-api-with-nodejs-expressjs-and-mongodb-99348012925d
-        // for (let node of network) {
-        //     let response = 
-        // }
-    }
+    // async replaceChain() {
+    //     const network = this.nodes
+    //     let longest
+    //     let maxLength = this.chain.length
+        
+    //     for (let node of network) {
+    //         let response = await axios.get("http://${node}/get_chain")
+    //         if (response.status === 200) {
+
+    //         }
+    //     }
+    // }
 
     getPrevBlock() {
         return this.chain[this.chain.length - 1]
