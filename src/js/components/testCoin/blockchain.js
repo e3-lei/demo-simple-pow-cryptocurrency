@@ -77,6 +77,8 @@ export default class Blockchain {
         const network = this.nodes
         let longest
         let maxLength = this.chain.length
+        // need express here
+        // https://medium.com/@dinyangetoh/how-to-build-simple-restful-api-with-nodejs-expressjs-and-mongodb-99348012925d
         // for (let node of network) {
         //     let response = 
         // }
