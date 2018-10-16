@@ -1,3 +1,5 @@
+import { parse } from 'url';
+
 export default class Blockchain {
     constructor() {
         this.hashlib = require('jshashes')
@@ -77,6 +79,10 @@ export default class Blockchain {
         const prevBlock = this.getPrevBlock()
 
         return prevBlock['index'] + 1
+    }
+
+    addNode(address) {
+        this.nodes.add(parse(address).hostname)
     }
 
     getPrevBlock() {
