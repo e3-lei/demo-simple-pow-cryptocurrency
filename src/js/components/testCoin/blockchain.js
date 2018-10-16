@@ -1,9 +1,9 @@
 import { parse } from 'url';
+import { jshashes } from 'jshashes';
 
 export default class Blockchain {
     constructor() {
-        this.hashlib = require('jshashes')
-        this.sha256 = new this.hashlib.SHA256
+        this.sha256 = new jshashes.SHA256
 
         this.chain = []
         this.transactions = []
@@ -58,18 +58,6 @@ export default class Blockchain {
         return true
     }
 
-    calcHash(newProof, prevProof) {
-        return this.sha256.hex((Math.pow(newProof, 2) - Math.pow(prevProof, 2)).toString())
-    }
-
-    isHashValid(hash) {
-        return hash.substring(0, 4) === '0000'
-    }
-
-    hashBlock(block) {
-        return this.sha256.hex(JSON.stringify(block, Object.keys(block).sort()));
-    }
-
     addTransaction(sender, receiver, amount) {
         this.transactions.push({
             'sender': sender,
@@ -85,7 +73,28 @@ export default class Blockchain {
         this.nodes.add(parse(address).hostname)
     }
 
+    replaceChain() {
+        const network = this.nodes
+        let longest
+        let maxLength = this.chain.length
+        // for (let node of network) {
+        //     let response = 
+        // }
+    }
+
     getPrevBlock() {
         return this.chain[this.chain.length - 1]
+    }
+
+    calcHash(newProof, prevProof) {
+        return this.sha256.hex((Math.pow(newProof, 2) - Math.pow(prevProof, 2)).toString())
+    }
+
+    isHashValid(hash) {
+        return hash.substring(0, 4) === '0000'
+    }
+
+    hashBlock(block) {
+        return this.sha256.hex(JSON.stringify(block, Object.keys(block).sort()));
     }
 }
