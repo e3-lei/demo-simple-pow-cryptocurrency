@@ -76,16 +76,28 @@ export default class Blockchain {
     }
 
     async replaceChain() {
-    //     const network = this.nodes
-    //     let longest
-    //     let maxLength = this.chain.length
+        const network = this.nodes
+        let longest
+        let maxLength = this.chain.length
         
-    //     for (let node of network) {
-    //         let response = await axios.get("http://${node}/get_chain")
-    //         if (response.status === 200) {
+        for (let node of network) {
+            let response = await axios.get("http://${node}/get_chain")
+            if (response.status === 200) {
+                let chain = response.chain
+                let length = response.length
+                if (length > maxLength && this.isChainValid(chain)) {
+                    maxLength = length
+                    longest = chain
+                }
+            }
+        }
 
-    //         }
-    //     }
+        if (longest) {
+            this.chain = longest
+            return true
+        }
+
+        return false
     }
 
     getPrevBlock() {
