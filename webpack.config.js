@@ -1,11 +1,16 @@
-var path = require('path');
-var webpack = require('webpack');
+const nodeExternals = require('webpack-node-externals');
+const path = require('path');
 module.exports = {
+    target: 'node',
+    externals: [nodeExternals()],
     mode: 'development',
-    entry: './src/js/app.js',
+    entry: {
+        'index': './src/js/app.js'
+    },
     output: {
-        path: path.resolve(__dirname, 'public'),
-        filename: 'app.bundle.js'
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'app.bundle.js',
+        libraryTarget: 'commonjs2'
     },
     module: {
         rules: [

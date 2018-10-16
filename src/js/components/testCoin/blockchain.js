@@ -1,8 +1,8 @@
 import { parse } from 'url';
-import { jshashes } from 'jshashes';
 
 export default class Blockchain {
     constructor() {
+        const jshashes = require('jshashes')
         this.sha256 = new jshashes.SHA256
 
         this.chain = []
