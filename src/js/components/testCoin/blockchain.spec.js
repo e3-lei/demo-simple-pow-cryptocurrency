@@ -2,7 +2,7 @@ let assert = require('assert');
 
 import Blockchain from './blockchain.js';
 
-describe('test for class Blockchain', function() {
+describe('test for class Blockchain', () => {
     it('should return insert the first block after init', function() {
         const blockchain = new Blockchain
         const firstBlock = blockchain.chain[0]
@@ -25,5 +25,15 @@ describe('test for class Blockchain', function() {
         assert.equal(secondBlock.previous_hash, blockchain.hashBlock(firstBlock));
         assert.equal(secondBlock.transactions.length, 0);
         assert.equal(blockchain.isChainValid(blockchain.chain), true)
+    })
+    it('should add transaction', () => {
+        const blockchain = new Blockchain
+        const firstBlock = blockchain.chain[0]
+        blockchain.addTransaction('senderAddr', 'receiverAddr', 100)
+
+        assert.equal(blockchain.transactions.length, 1);
+        assert.equal(blockchain.transactions[0].sender, 'senderAddr');
+        assert.equal(blockchain.transactions[0].receiver, 'receiverAddr');
+        assert.equal(blockchain.transactions[0].amount, 100);
     })
 });

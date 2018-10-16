@@ -23,10 +23,6 @@ export default class Blockchain {
         return block
     }
 
-    getPrevBlock() {
-        return this.chain[-1]
-    }
-
     pow(prevProof) {
         let newProof = 1
         let checkProof = false
@@ -70,5 +66,20 @@ export default class Blockchain {
 
     hashBlock(block) {
         return this.sha256.hex(JSON.stringify(block, Object.keys(block).sort()));
+    }
+
+    addTransaction(sender, receiver, amount) {
+        this.transactions.push({
+            'sender': sender,
+            'receiver': receiver,
+            'amount': amount
+        })
+        const prevBlock = this.getPrevBlock()
+
+        return prevBlock['index'] + 1
+    }
+
+    getPrevBlock() {
+        return this.chain[this.chain.length - 1]
     }
 }
