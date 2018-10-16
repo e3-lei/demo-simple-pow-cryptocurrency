@@ -1,5 +1,6 @@
-import { parse } from 'url';
-import { axios } from 'axios';
+import { parse } from 'url'
+import { axios } from 'axios'
+import "@babel/polyfill"
 
 export default class Blockchain {
     constructor() {
@@ -74,7 +75,7 @@ export default class Blockchain {
         this.nodes.add(parse(address).hostname)
     }
 
-    // async replaceChain() {
+    async replaceChain() {
     //     const network = this.nodes
     //     let longest
     //     let maxLength = this.chain.length
@@ -85,7 +86,7 @@ export default class Blockchain {
 
     //         }
     //     }
-    // }
+    }
 
     getPrevBlock() {
         return this.chain[this.chain.length - 1]

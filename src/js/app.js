@@ -1,6 +1,6 @@
-import express from 'express';
-import Blockchain from './components/testCoin/blockchain';
-import Route from './api/route';
+import express from 'express'
+import Blockchain from './components/testCoin/blockchain'
+import Route from './api/route'
 
 let app = express();
 
