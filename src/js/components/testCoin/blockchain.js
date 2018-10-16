@@ -75,6 +75,7 @@ export default class Blockchain {
         this.nodes.add(parse(address).hostname)
     }
 
+    // @todo: test this
     async replaceChain() {
         const network = this.nodes
         let longest
