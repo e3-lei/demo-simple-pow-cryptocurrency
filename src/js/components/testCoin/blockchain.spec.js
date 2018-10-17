@@ -39,11 +39,11 @@ describe('test for class Blockchain', () => {
         assert.equal(blockchain.transactions[0].amount, 100);
     })
     it('should add a node', () => {
-        blockchain.addNode('http://127.0.0.1:8000/test/me')
+        // @todo checkout function addNode
+        blockchain.addNode('localhost:8000')
         blockchain.addNode('https://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash')
 
-        assert.equal(blockchain.nodes.has('127.0.0.1'), true)
-        assert.equal(blockchain.nodes.has('sub.host.com'), true)
+        assert.equal(blockchain.nodes.has('localhost:8000'), true)
         assert.equal(blockchain.nodes.has('test.test'), false)
     })
 });
