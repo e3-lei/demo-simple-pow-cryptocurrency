@@ -11,6 +11,7 @@ let route = new Route(blockchain)
 
 app.get('/get_chain', (req, res) => res.status(200).json(route.getChain()));
 app.get('/mine', (req, res) => res.status(200).json(route.mine()));
+app.get('/valid', (req, res) => res.status(200).json(route.valid()));
 
 app.listen(port, err => {
     if (err) {

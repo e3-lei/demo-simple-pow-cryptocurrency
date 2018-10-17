@@ -25,4 +25,12 @@ export default class Route {
             'transactions': block['transactions']
         }
     }
+
+    valid() {
+        return this.blockchain.isChainValid(this.blockchain.chain) ? {
+            'message': 'blockchain is valid'
+        } : {
+            'message': 'noo, something is wrong'
+        }
+    }
 }
