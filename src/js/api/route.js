@@ -33,4 +33,18 @@ export default class Route {
             'message': 'noo, something is wrong'
         }
     }
+
+    addTransaction(req) {
+        let data = req.body
+        let err
+        const keys = ['sender', 'receiver', 'amount']
+        keys.forEach(key => {
+            console.log(key in data)
+            if (!(key in data)) {
+                err = true
+            }
+        })
+
+        return err ? 0: this.blockchain.addTransaction(data['sender'], data['receiver'], data['amount'])
+    }
 }
