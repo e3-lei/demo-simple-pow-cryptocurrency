@@ -47,4 +47,17 @@ export default class Route {
 
         return err ? 0: this.blockchain.addTransaction(data['sender'], data['receiver'], data['amount'])
     }
+
+    connect(req) {
+        let nodes = req.body.nodes
+        if (!nodes) {
+            return false
+        }
+
+        nodes.forEach(node => this.blockchain.addNode(node))
+        return {
+            'message': 'all nodes are now connected',
+            'all_nodes': this.blockchain.nodes
+        }
+    }
 }

@@ -24,6 +24,15 @@ app.post('/add_transaction', (req, res) => {
     return res.status(201).json({'message': 'transaction added to block' + index })
 });
 
+app.post('/connect', (req, res) => {
+    let response = route.connect(req)
+    if (!response) {
+        return res.status(422).json({'message': 'required parameter nodes missing'})   
+    }
+
+    return res.status(201).json(response)
+})
+
 app.listen(port, err => {
     if (err) {
         throw err;
