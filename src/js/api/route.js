@@ -4,14 +4,14 @@ export default class Route {
     }
 
     getChain() {
-        return this.response(200, this.getChainJson())
-    }
-
-    getChainJson() {
         return {
             'chain': this.blockchain.chain,
             'length': this.blockchain.chain.length
         }
+    }
+
+    getChainResponse() {
+        return this.response(200, this.getChain())
     }
 
     response(status, data) {
