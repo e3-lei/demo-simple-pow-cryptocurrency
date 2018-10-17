@@ -1,6 +1,7 @@
 import { parse } from 'url'
-import { axios } from 'axios'
 import "@babel/polyfill"
+
+const axios = require('axios');
 
 export default class Blockchain {
     constructor() {
@@ -72,7 +73,8 @@ export default class Blockchain {
     }
 
     addNode(address) {
-        this.nodes.add(parse(address).hostname)
+        // @todo use hostname:port instead of address directly
+        this.nodes.add(address)
     }
 
     // @todo: test this
@@ -82,10 +84,10 @@ export default class Blockchain {
         let maxLength = this.chain.length
         
         for (let node of network) {
-            let response = await axios.get("http://${node}/get_chain")
+            let response = await axios.get("http://" + node + "/get_chain")
             if (response.status === 200) {
-                let chain = response.chain
-                let length = response.length
+                let chain = response.data.chain
+                let length = response.data.length
                 if (length > maxLength && this.isChainValid(chain)) {
                     maxLength = length
                     longest = chain

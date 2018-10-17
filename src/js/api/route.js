@@ -1,3 +1,5 @@
+import "@babel/polyfill"
+
 export default class Route {
     constructor(blockchain) {
         this.blockchain = blockchain
@@ -39,7 +41,6 @@ export default class Route {
         let err
         const keys = ['sender', 'receiver', 'amount']
         keys.forEach(key => {
-            console.log(key in data)
             if (!(key in data)) {
                 err = true
             }
@@ -58,6 +59,14 @@ export default class Route {
         return {
             'message': 'all nodes are now connected',
             'all_nodes': this.blockchain.nodes
+        }
+    }
+
+    async sync() {
+        let replaced = await this.blockchain.replaceChain()
+        return {
+            'replaced': replaced,
+            'message': 'blockchain are synced'
         }
     }
 }
