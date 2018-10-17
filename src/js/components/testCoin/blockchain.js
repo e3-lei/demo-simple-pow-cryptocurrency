@@ -14,7 +14,7 @@ export default class Blockchain {
     }
 
     createBlock(proof, previousHash) {
-        const block = {
+        let block = {
             'index': this.chain.length + 1,
             'timestamp': Date.now().toString(),
             'proof': proof,
@@ -43,12 +43,12 @@ export default class Blockchain {
         let prevBlock = chain[0]
         let blockIndex = 1
         while (blockIndex < chain.length) {
-            const block = chain[blockIndex]
+            let block = chain[blockIndex]
             if (block['previous_hash'] != this.hashBlock(prevBlock)) {
                 return false
             }
 
-            const hash = this.calcHash(block['proof'], prevBlock['proof'])
+            let hash = this.calcHash(block['proof'], prevBlock['proof'])
             if (!this.isHashValid(hash)) {
                 return false
             }
@@ -66,7 +66,7 @@ export default class Blockchain {
             'receiver': receiver,
             'amount': amount
         })
-        const prevBlock = this.getPrevBlock()
+        let prevBlock = this.getPrevBlock()
 
         return prevBlock['index'] + 1
     }
@@ -77,7 +77,7 @@ export default class Blockchain {
 
     // @todo: test this
     async replaceChain() {
-        const network = this.nodes
+        let network = this.nodes
         let longest
         let maxLength = this.chain.length
         

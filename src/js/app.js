@@ -9,7 +9,8 @@ var port = process.env.PORT || 3000;
 let blockchain = new Blockchain
 let route = new Route(blockchain)
 
-app.get('/get_chain', route.getChain());
+app.get('/get_chain', (req, res) => res.status(200).json(route.getChain()));
+app.get('/mine', (req, res) => res.status(200).json(route.mine()));
 
 app.listen(port, err => {
     if (err) {
