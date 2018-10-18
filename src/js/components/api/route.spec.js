@@ -1,7 +1,7 @@
 const assert = require('assert')
 
 import Route from './route.js'
-import Blockchain from '../components/testCoin/blockchain'
+import Blockchain from '../testCoin/blockchain'
 
 describe('test for Route class', () => {
     let route
