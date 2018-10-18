@@ -1,9 +1,5 @@
 # js版本的简化POW
 
-## todo
-
-* route e2e test setup
-
 ## run to test
 
 * `PORT=3001 npm run dev` tab1

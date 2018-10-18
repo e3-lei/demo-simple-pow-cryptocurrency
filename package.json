@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "pow demo",
   "main": "public/app.bundle.js",
-  "repository": "e3-lei/simple-pow-cryptocurrency",
+  "repository": "e3-lei/demo-simple-pow-cryptocurrency",
   "scripts": {
     "dev": "cross-env NODE_ENV=development node dist/app.bundle.js",
     "watch": "webpack --watch",
